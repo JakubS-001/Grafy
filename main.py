@@ -74,7 +74,18 @@ def main():
     else:
         graph = create_non_hamiltonian_graph(n, 0.5)
 
-    print_graph(graph)
+    while True:
+        command = input("> ").strip().lower()
+        if command == "print":
+            print_graph(graph)
+        elif command == "exit":
+            print("Exiting program.")
+            break
+        elif command == "help":
+            print('''Komendy:
+print - wyświetla graf (lista sąsiedztwa)
+exit - kończy program
+help - wyświetla pomoc''')
 
 if __name__ == "__main__":
     main()
