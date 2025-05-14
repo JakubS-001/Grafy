@@ -56,9 +56,24 @@ def print_graph(graph):
         print(f"{i}:", *neighbors)
 
 def main():
-    graph = create_hamiltonian_graph(13, 0.7)
-    print_graph(graph)
-    graph = create_non_hamiltonian_graph(13, 0.7)
+    if len(sys.argv) < 2 or sys.argv[1] not in ["--hamilton", "--non-hamilton", "-h", "-n"]:
+        print("Użycie: python program.py --hamilton/-h lub --non-hamilton/-n")
+        return
+
+    n = int(input("nodes> "))
+    graph = []
+
+    if sys.argv[1] in ["--hamilton", "-h"]:
+        saturation = None
+
+        while saturation not in [30, 70]:
+            saturation = int(input("saturation (30/70)> "))
+        saturation = int(saturation) / 100
+
+        graph = create_hamiltonian_graph(n, saturation)
+    else:
+        graph = create_non_hamiltonian_graph(n, 0.5)
+
     print_graph(graph)
 
 if __name__ == "__main__":
