@@ -10,6 +10,7 @@ def create_hamiltonian_graph(n, saturation):
     
     nodes = list(range(n))
     random.shuffle(nodes)
+
     for i in range(n):
         a, b = nodes[i], nodes[(i + 1) % n]
         if b not in graph[a]:
@@ -39,6 +40,17 @@ def create_hamiltonian_graph(n, saturation):
 
     return graph
 
+def create_non_hamiltonian_graph(n, saturation):
+    graph = create_hamiltonian_graph(n, saturation)
+
+    isolated = random.randint(0, n - 1)
+
+    for neighbor in graph[isolated]:
+        graph[neighbor].remove(isolated)
+    graph[isolated] = []
+
+    return graph
+
 def print_graph(graph):
     for i, neighbors in enumerate(graph):
         print(f"{i}:", *neighbors)
@@ -46,7 +58,8 @@ def print_graph(graph):
 def main():
     graph = create_hamiltonian_graph(13, 0.7)
     print_graph(graph)
-
+    graph = create_non_hamiltonian_graph(13, 0.7)
+    print_graph(graph)
 
 if __name__ == "__main__":
     main()
