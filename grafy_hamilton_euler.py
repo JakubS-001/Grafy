@@ -1,5 +1,6 @@
 import random
 import sys
+from find_cycle import *
 
 def create_hamiltonian_graph(n, saturation):
 
@@ -60,7 +61,15 @@ def main():
         print("Użycie: python program.py --hamilton/-h lub --non-hamilton/-n")
         return
 
-    n = int(input("nodes> "))
+    while True:
+        data = input("nodes> ")
+        try:
+            n=int(data)
+            if n<1: raise ValueError
+            break
+        except:
+            print("Podaj liczbę naturalną")
+
     graph = []
 
     if sys.argv[1] in ["--hamilton", "-h"]:
@@ -78,12 +87,15 @@ def main():
         command = input("> ").strip().lower()
         if command == "print":
             print_graph(graph)
+        elif command=="find euler":
+            find_eulerian_cycle(graph)
         elif command == "exit":
             print("Exiting program.")
             break
         elif command == "help":
             print('''Komendy:
 print - wyświetla graf (lista sąsiedztwa)
+find euler - sprawdza czy w grafie znajduje się cykl Eulera
 exit - kończy program
 help - wyświetla pomoc''')
 
