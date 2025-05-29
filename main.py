@@ -1,4 +1,3 @@
-import random
 import sys
 from find_cycle import *
 from graph_creation import create_hamiltonian_graph, create_non_hamiltonian_graph
@@ -9,7 +8,7 @@ def print_graph(graph):
         print(f"{i}:", *neighbors)
 
 def main():
-    if len(sys.argv) < 2 or sys.argv[1] not in ["--hamilton", "--non-hamilton", "-h", "-n"]:
+    if len(sys.argv) != 2 or sys.argv[1] not in ["--hamilton", "--non-hamilton", "-h", "-n"]:
         print("Użycie: python program.py --hamilton/-h lub --non-hamilton/-n")
         return
 
@@ -20,7 +19,7 @@ def main():
             if n<1: raise ValueError
             break
         except:
-            print("Podaj liczbę naturalną")
+            print("Podaj liczbę naturalną większą od 0.")
 
     graph = []
 
