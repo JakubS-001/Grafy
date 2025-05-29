@@ -89,6 +89,8 @@ def main():
             print_graph(graph)
         elif command=="find euler":
             find_eulerian_cycle(graph)
+        elif command=="find hamilton":
+            find_hamiltonian_cycle(graph)
         elif command == "exit":
             print("Exiting program.")
             break
@@ -96,6 +98,7 @@ def main():
             print('''Komendy:
 print - wyświetla graf (lista sąsiedztwa)
 find euler - sprawdza czy w grafie znajduje się cykl Eulera
+find hamilton - sprawdza czy w grafie znajduje się cykl Hamiltona
 exit - kończy program
 help - wyświetla pomoc''')
 
