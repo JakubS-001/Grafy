@@ -58,6 +58,8 @@ find euler - sprawdza czy w grafie znajduje się cykl Eulera
 find hamilton - sprawdza czy w grafie znajduje się cykl Hamiltona
 exit - kończy program
 help - wyświetla pomoc''')
+        else:
+            print("Unknown command. Type 'help' for the list of available commands")
 
 if __name__ == "__main__":
     try:
