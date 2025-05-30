@@ -45,7 +45,6 @@ def find_hamiltonian_cycle(graph):
     path = []
 
     def backtrack(v, visited):
-        #print("Exploring path:", path)
         if len(path) == n:
             return path[0] in graph[v]  # Sprawdza, czy ostatni wierzchołek łączy się z pierwszym
         for neighbor in graph[v]:

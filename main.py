@@ -27,7 +27,13 @@ def main():
         saturation = None
 
         while saturation not in [30, 70]:
-            saturation = int(input("saturation (30/70)> "))
+            data = input("saturation (30/70)> ")
+            try:
+                saturation=int(data)
+                if saturation not in [30, 70]: raise ValueError
+                break
+            except:
+                print("Podaj liczbę 30 lub 70.")
         saturation = int(saturation) / 100
 
         graph = create_hamiltonian_graph(n, saturation)
@@ -52,6 +58,8 @@ find euler - sprawdza czy w grafie znajduje się cykl Eulera
 find hamilton - sprawdza czy w grafie znajduje się cykl Hamiltona
 exit - kończy program
 help - wyświetla pomoc''')
+        else:
+            print("Unknown command. Type 'help' for the list of available commands")
 
 if __name__ == "__main__":
     try:
