@@ -1,6 +1,14 @@
 import random
 
+# Prof's Review: I would explicitly declare the graph representation with following functions:
+# add_edge()
+# check_edge()
+# get_next_vertices()
+# print_graph()
+# Zasada Single Responsibility and Dependency Inversion Principle from SOLID 
+
 def create_hamiltonian_graph(n, saturation):
+    # Prof's Review: Good practice, validate arguments for API level calls.
 
     max_edges = n * (n - 1) // 2
     target_edges = int(max_edges * saturation)
@@ -40,6 +48,8 @@ def create_hamiltonian_graph(n, saturation):
     return graph
 
 def create_non_hamiltonian_graph(n, saturation):
+    # Prof's Review: Good practice, validate arguments for API level calls.
+
     graph = create_hamiltonian_graph(n, saturation)
 
     isolated = random.randint(0, n - 1)

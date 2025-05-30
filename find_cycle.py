@@ -1,4 +1,4 @@
-def is_connected(graph):
+def is_connected(graph): # rename to _is_connected, this makes it a private function to the module
     visited = set()
 
     def dfs(u):
@@ -19,6 +19,8 @@ def is_connected(graph):
     return True
 
 def find_eulerian_cycle(graph):
+    # Prof's Review: Good practice, validate arguments for API level calls. (ex. Is graph not None() )
+
     if not is_connected(graph):
         print("Graf nie jest spójny, nie ma cyklu Eulera.")
         return
@@ -41,6 +43,8 @@ def find_eulerian_cycle(graph):
     print("Cykl Eulera:", path[::-1])
 
 def find_hamiltonian_cycle(graph):
+    # Prof's Review: Good practice, validate arguments for API level calls. (ex. Is graph not None() )
+
     n = len(graph)
     path = []
 
