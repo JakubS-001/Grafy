@@ -1,5 +1,28 @@
+def is_connected(graph):
+    visited = set()
+
+    def dfs(u):
+        visited.add(u)
+        for v in graph[u]:
+            if v not in visited:
+                dfs(v)
+
+    start = next((i for i, neighbors in enumerate(graph) if neighbors), None)
+    if start is None:
+        return True
+
+    dfs(start)
+
+    for i in range(len(graph)):
+        if graph[i] and i not in visited:
+            return False
+    return True
+
 def find_eulerian_cycle(graph):
-    n = len(graph)
+    if not is_connected(graph):
+        print("Graf nie jest spójny, nie ma cyklu Eulera.")
+        return
+
     for neighbors in graph:
         if len(neighbors) % 2 != 0:
             print("Graf nie ma cyklu Eulera (nie wszystkie stopnie są parzyste).")
