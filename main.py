@@ -1,7 +1,7 @@
 import sys
 from find_cycle import *
 from graph_creation import create_hamiltonian_graph, create_non_hamiltonian_graph
-
+from export import print_tikz
 
 def print_graph(graph):
     for i, neighbors in enumerate(graph):
@@ -48,6 +48,8 @@ def main():
             find_eulerian_cycle(graph)
         elif command=="find hamilton":
             find_hamiltonian_cycle(graph)
+        elif command=="export":
+            print_tikz(graph)
         elif command == "exit":
             print("Exiting program.")
             break
